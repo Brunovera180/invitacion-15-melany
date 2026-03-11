@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis 15 Años</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins', sans-serif;
+background:#fff0f6;
+color:#333;
+text-align:center;
+}
+
+h1{
+font-family:'Great Vibes', cursive;
+font-size:70px;
+margin:10px;
+color:#ff4da6;
+}
+
+.hero{
+height:100vh;
+background:url("foto-principal.jpg") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+color:white;
+background-color:rgba(0,0,0,0.4);
+background-blend-mode:darken;
+}
+
+.hero h2{
+font-size:30px;
+font-weight:300;
+}
+
+.section{
+padding:60px 20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:20px;
+max-width:600px;
+margin:auto;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.countdown{
+font-size:28px;
+margin-top:20px;
+font-weight:bold;
+color:#ff4da6;
+}
+
+.button{
+display:inline-block;
+margin-top:20px;
+padding:14px 30px;
+background:#ff4da6;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:10px;
+max-width:900px;
+margin:auto;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+}
+
+.footer{
+margin-top:40px;
+padding:20px;
+background:#222;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- PORTADA -->
+
+<div class="hero">
+<h1>Mis 15 Años</h1>
+<h2>Valentina</h2>
+<p>Te invito a celebrar conmigo</p>
+</div>
+
+
+<!-- INFO EVENTO -->
+
+<div class="section">
+
+<div class="card">
+
+<h2>12 de Octubre 2026</h2>
+
+<p>21:00 hs</p>
+
+<p>
+Salón Fiesta Dorada<br>
+Av. Siempre Viva 123
+</p>
+
+<div class="countdown" id="countdown"></div>
+
+<a class="button" href="https://wa.me/5491122334455">
+Confirmar asistencia
+</a>
+
+</div>
+
+</div>
+
+
+<!-- GALERIA -->
+
+<div class="section">
+
+<h2>Fotos</h2>
+
+<div class="gallery">
+
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+
+</div>
+
+</div>
+
+
+<!-- MAPA -->
+
+<div class="section">
+
+<h2>Cómo llegar</h2>
+
+<iframe
+src="https://maps.google.com/maps?q=buenos%20aires&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="90%"
+height="350"
+style="border:0;border-radius:10px;">
+</iframe>
+
+</div>
+
+
+<div class="footer">
+Te esperamos para una noche inolvidable ✨
+</div>
+
+
+<script>
+
+var countDownDate = new Date("Oct 12, 2026 21:00:00").getTime();
+
+var x = setInterval(function() {
+
+var now = new Date().getTime();
+var distance = countDownDate - now;
+
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+document.getElementById("countdown").innerHTML =
+days + " días " + hours + " hs " + minutes + " min " + seconds + " seg ";
+
+}, 1000);
+
+</script>
+
+</body>
+</html>
