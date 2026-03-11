@@ -9,87 +9,266 @@
 
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:'Poppins', sans-serif;
-background:#fff0f6;
+background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+min-height:100vh;
 color:#333;
-text-align:center;
+overflow-x:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.3"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.3"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.2"/><circle cx="10" cy="50" r="0.5" fill="white" opacity="0.2"/><circle cx="90" cy="30" r="0.5" fill="white" opacity="0.2"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+pointer-events:none;
+z-index:1;
+}
+
+.container{
+position:relative;
+z-index:2;
 }
 
 h1{
 font-family:'Great Vibes', cursive;
-font-size:70px;
+font-size:clamp(40px, 8vw, 70px);
 margin:10px;
-color:#ff4da6;
+color:#fff;
+text-shadow:2px 2px 4px rgba(0,0,0,0.5);
+animation:fadeInUp 1s ease-out;
+}
+
+h2{
+font-size:clamp(20px, 4vw, 30px);
+font-weight:300;
+color:#fff;
+text-shadow:1px 1px 2px rgba(0,0,0,0.5);
+animation:fadeInUp 1s ease-out 0.2s both;
 }
 
 .hero{
-height:100vh;
-background:url("foto-principal.jpg") center/cover no-repeat;
+min-height:100vh;
+background:url("https://picsum.photos/seed/quinceanera/1920/1080.jpg") center/cover no-repeat;
 display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
 color:white;
+position:relative;
 background-color:rgba(0,0,0,0.4);
 background-blend-mode:darken;
 }
 
-.hero h2{
-font-size:30px;
-font-weight:300;
+.hero::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:linear-gradient(45deg, rgba(255,77,166,0.3), rgba(103,126,234,0.3));
+animation:shimmer 3s ease-in-out infinite alternate;
+}
+
+.hero *{
+position:relative;
+z-index:1;
+}
+
+.hero p{
+font-size:clamp(16px, 3vw, 20px);
+margin:20px 0;
+animation:fadeInUp 1s ease-out 0.4s both;
 }
 
 .section{
-padding:60px 20px;
+padding:80px 20px;
+position:relative;
+}
+
+.section:nth-child(even){
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+}
+
+.section h2{
+font-family:'Great Vibes', cursive;
+font-size:clamp(30px, 6vw, 50px);
+color:#fff;
+margin-bottom:30px;
+text-align:center;
+text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+animation:fadeInUp 1s ease-out;
 }
 
 .card{
-background:white;
-padding:40px;
-border-radius:20px;
-max-width:600px;
-margin:auto;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
+background:rgba(255,255,255,0.95);
+backdrop-filter:blur(20px);
+padding:50px;
+border-radius:25px;
+max-width:700px;
+margin:0 auto;
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+border:1px solid rgba(255,255,255,0.3);
+transform:translateY(30px);
+animation:slideInUp 0.8s ease-out 0.6s both;
+text-align:center;
+}
+
+.card h2{
+font-family:'Poppins', sans-serif;
+font-size:clamp(24px, 5vw, 32px);
+color:#ff4da6;
+margin-bottom:20px;
+text-shadow:none;
+}
+
+.card p{
+font-size:clamp(16px, 3vw, 18px);
+margin:15px 0;
+color:#555;
+line-height:1.6;
+text-align: center;
 }
 
 .countdown{
-font-size:28px;
-margin-top:20px;
+font-size:clamp(18px, 4vw, 28px);
+margin:30px 0;
 font-weight:bold;
 color:#ff4da6;
+padding:20px;
+background:linear-gradient(135deg, #ff4da6, #ff8fab);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
+animation:pulse 2s ease-in-out infinite;
+}
+
+a.button{
+text-align: center;
 }
 
 .button{
 display:inline-block;
-margin-top:20px;
-padding:14px 30px;
-background:#ff4da6;
+margin-top:30px;
+padding:16px 40px;
+background:linear-gradient(135deg, #ff4da6, #ff8fab);
 color:white;
 text-decoration:none;
-border-radius:30px;
+border-radius:50px;
 font-weight:600;
+font-size:clamp(14px, 3vw, 16px);
+transition:all 0.3s ease;
+box-shadow:0 10px 20px rgba(255,77,166,0.3);
+transform:translateY(0);
+animation:fadeInUp 1s ease-out 0.8s both;
+}
+
+.button:hover{
+transform:translateY(-3px);
+box-shadow:0 15px 30px rgba(255,77,166,0.4);
+background:linear-gradient(135deg, #ff3d96, #ff7e9a);
 }
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:10px;
-max-width:900px;
-margin:auto;
+grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+gap:20px;
+max-width:1000px;
+margin:0 auto;
+padding:0 20px;
 }
 
 .gallery img{
 width:100%;
-border-radius:10px;
+height:250px;
+object-fit:cover;
+border-radius:15px;
+transition:all 0.3s ease;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+animation:fadeIn 1s ease-out;
+}
+
+.gallery img:hover{
+transform:scale(1.05) translateY(-5px);
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
 }
 
 .footer{
-margin-top:40px;
-padding:20px;
-background:#222;
+margin-top:60px;
+padding:40px 20px;
+background:rgba(0,0,0,0.3);
+backdrop-filter:blur(10px);
 color:white;
+text-align:center;
+font-size:clamp(16px, 3vw, 18px);
+border-top:1px solid rgba(255,255,255,0.1);
+}
+
+iframe{
+border-radius:15px;
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+transition:all 0.3s ease;
+}
+
+iframe:hover{
+transform:scale(1.02);
+box-shadow:0 25px 50px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeInUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes slideInUp{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+@keyframes pulse{
+0%, 100%{transform:scale(1);}
+50%{transform:scale(1.05);}
+}
+
+@keyframes shimmer{
+0%{opacity:0.3;}
+100%{opacity:0.6;}
+}
+
+@media (max-width:768px){
+.section{padding:60px 15px;}
+.card{padding:30px 20px;}
+.gallery{grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:15px;}
+.gallery img{height:200px;}
 }
 
 </style>
@@ -97,11 +276,13 @@ color:white;
 
 <body>
 
+<div class="container">
+
 <!-- PORTADA -->
 
 <div class="hero">
 <h1>Mis 15 Años</h1>
-<h2>Valentina</h2>
+<h2>Melany</h2>
 <p>Te invito a celebrar conmigo</p>
 </div>
 
@@ -112,13 +293,13 @@ color:white;
 
 <div class="card">
 
-<h2>12 de Octubre 2026</h2>
+<h2>26 de Noviembre 2025</h2>
 
 <p>21:00 hs</p>
 
 <p>
-Salón Fiesta Dorada<br>
-Av. Siempre Viva 123
+Salón Fiesta Clahe Eventos Sarandí III<br>
+Independencia 39, Sarandí, Buenos Aires
 </p>
 
 <div class="countdown" id="countdown"></div>
@@ -140,9 +321,12 @@ Confirmar asistencia
 
 <div class="gallery">
 
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
+<img src="https://picsum.photos/seed/quince1/400/300.jpg" alt="Foto 1">
+<img src="https://picsum.photos/seed/quince2/400/300.jpg" alt="Foto 2">
+<img src="https://picsum.photos/seed/quince3/400/300.jpg" alt="Foto 3">
+<img src="https://picsum.photos/seed/quince4/400/300.jpg" alt="Foto 4">
+<img src="https://picsum.photos/seed/quince5/400/300.jpg" alt="Foto 5">
+<img src="https://picsum.photos/seed/quince6/400/300.jpg" alt="Foto 6">
 
 </div>
 
@@ -156,8 +340,8 @@ Confirmar asistencia
 <h2>Cómo llegar</h2>
 
 <iframe
-src="https://maps.google.com/maps?q=buenos%20aires&t=&z=13&ie=UTF8&iwloc=&output=embed"
-width="90%"
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.1016418316553!2d-58.3484228!3d-34.6773841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a333005c26a79f%3A0xa11549e3e1302fb8!2sClahe%20Eventos%20Sarand%C3%AD%20III!5e0!3m2!1ses-419!2sar!4v1773200353177!5m2!1ses-419!2sar"
+width="100%"
 height="350"
 style="border:0;border-radius:10px;">
 </iframe>
@@ -169,15 +353,22 @@ style="border:0;border-radius:10px;">
 Te esperamos para una noche inolvidable ✨
 </div>
 
+</div>
 
 <script>
 
-var countDownDate = new Date("Oct 12, 2026 21:00:00").getTime();
+var countDownDate = new Date("Nov 26, 2026 21:00:00").getTime();
 
 var x = setInterval(function() {
 
 var now = new Date().getTime();
 var distance = countDownDate - now;
+
+if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "🎉 ¡El evento ha comenzado! 🎉";
+    return;
+}
 
 var days = Math.floor(distance / (1000 * 60 * 60 * 24));
 var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -185,7 +376,12 @@ var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 document.getElementById("countdown").innerHTML =
-days + " días " + hours + " hs " + minutes + " min " + seconds + " seg ";
+"<div style='display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;'>" +
+"<div style='text-align: center;'><div style='font-size: 2em; font-weight: bold; color: #ff4da6;'>" + days + "</div><div style='font-size: 0.9em; color: #666;'>días</div></div>" +
+"<div style='text-align: center;'><div style='font-size: 2em; font-weight: bold; color: #ff4da6;'>" + hours + "</div><div style='font-size: 0.9em; color: #666;'>horas</div></div>" +
+"<div style='text-align: center;'><div style='font-size: 2em; font-weight: bold; color: #ff4da6;'>" + minutes + "</div><div style='font-size: 0.9em; color: #666;'>minutos</div></div>" +
+"<div style='text-align: center;'><div style='font-size: 2em; font-weight: bold; color: #ff4da6;'>" + seconds + "</div><div style='font-size: 0.9em; color: #666;'>segundos</div></div>" +
+"</div>";
 
 }, 1000);
 
